@@ -1,0 +1,380 @@
+﻿@model IEnumerable<AdvisingAssistant.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <style>
+        table {
+            width: 1000px; /* Set a fixed width for the tables */
+            height: 100px; /* Set a fixed height for the tables */
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        /* Styling for table cells to ensure uniformity */
+        td {
+            border: 1px solid #000; /* Add border around each cell */
+            text-align: center;
+            vertical-align: middle; /* Center text vertically */
+            width: 100px; /* Set width for each cell */
+            height: 50px; /* Set height for each cell */
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #f2f2f2;
+            border: 1px solid #000;
+            text-align: center;
+            vertical-align: middle;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<h1>Schedule</h1>
+
+<p>
+    @*<a asp-action="Create">Add New Course</a>*@
+</p>
+
+@if (@User.Identity?.Name == "marco@student.edu")
+{
+
+    <table>
+        <tr>
+            <th>Previous Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Rhetoric & Composition I</td>
+            <td>ENGL</td>
+            <td>1301</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Rhetoric & Composition II</td>
+            <td>ENGL</td>
+            <td>2302</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 1</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>College Algebra</td>
+            <td>MATH</td>
+            <td>1314</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 2</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Intro to Computer Science</td>
+            <td>CSCI</td>
+            <td>1101</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Future Class 3</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Composition Theory & Pedagogy</td>
+            <td>ENGL</td>
+            <td>3405</td>
+        </tr>
+    </table>
+}
+
+@if (@User.Identity?.Name == "nathan@student.edu")
+{
+
+    <table>
+        <tr>
+            <th>Previous Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>College Algebra</td>
+            <td>MATH</td>
+            <td>1314</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Linear Algebra</td>
+            <td>MATH</td>
+            <td>2318</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 1</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. History I</td>
+            <td>HIST</td>
+            <td>1344</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 2</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Rhetoric & Composition I</td>
+            <td>ENGL</td>
+            <td>1301</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Future Class 3</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Number Theory</td>
+            <td>MATH</td>
+            <td>3415</td>
+        </tr>
+    </table>
+}
+
+@if (@User.Identity?.Name == "aneyda@student.edu")
+{
+
+    <table>
+        <tr>
+            <th>Previous Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Intro to Computer Science</td>
+            <td>CSCI</td>
+            <td>1101</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Computer Science I</td>
+            <td>CSCI</td>
+            <td>2302</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 1</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. Fed Gov & Pol</td>
+            <td>POLS</td>
+            <td>1304</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 2</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Rhetoric & Composition I</td>
+            <td>ENGL</td>
+            <td>1301</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Future Class 3</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Senior Project</td>
+            <td>CSCI</td>
+            <td>3410</td>
+        </tr>
+    </table>
+}
+
+@if (@User.Identity?.Name == "jorge@student.edu")
+{
+
+    <table>
+        <tr>
+            <th>Previous Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. Fed Gov & Pol</td>
+            <td>POLS</td>
+            <td>1304</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>TX Gov & Pol</td>
+            <td>POLS</td>
+            <td>2306</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 1</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>College Algebra</td>
+            <td>MATH</td>
+            <td>1314</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 2</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. History I</td>
+            <td>HIST</td>
+            <td>1344</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Future Class 3</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. Race & Ethnic Politics</td>
+            <td>POLS</td>
+            <td>3302</td>
+        </tr>
+    </table>
+}
+
+@if (@User.Identity?.Name == "steph@student.edu")
+{
+
+    <table>
+        <tr>
+            <th>Previous Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. History I</td>
+            <td>HIST</td>
+            <td>1344</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>U.S. History II</td>
+            <td>HIST</td>
+            <td>1344</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 1</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Intro to Computer Science</td>
+            <td>CSCI</td>
+            <td>1101</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Future Class 2</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Rhetoric & Composition I</td>
+            <td>ENGL</td>
+            <td>1301</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Future Class 3</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+        </tr>
+        <tr>
+            <td>Senior Research Seminar</td>
+            <td>HIST</td>
+            <td>3346</td>
+        </tr>
+    </table>
+}
