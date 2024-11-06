@@ -20,6 +20,36 @@ namespace AdvisingAssistant.Controllers
             return View("Index");
         }
 
+        /*
+        [HttpPost]
+        public IActionResult Submit(string email)
+        {
+            if (email == "marco@student.edu") 
+            {
+                return View("marcoStudent");
+            }
+            if (email == "nathan@student.edu")
+            {
+                return View("nathanStudent");
+            }
+            if (email == "aneyda@student.edu")
+            {
+                return View("aneydaStudent");
+            }
+            if (email == "jorge@student.edu")
+            {
+                return View("jorgeStudent");
+            }
+            if (email == "steph@student.edu")
+            {
+                return View("stephStudent");
+            }
+            else
+            {
+                return View();
+            }
+        }*/
+
         [Authorize]
         public IActionResult Major()
         {
