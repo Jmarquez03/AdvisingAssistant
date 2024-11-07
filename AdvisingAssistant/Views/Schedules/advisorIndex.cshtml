@@ -1,11 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
-@model IEnumerable<AdvisingAssistant.Models.Schedule>
-
-@{
-    ViewData["Title"] = "Index";
-}
 <head>
     <style>
         table {
@@ -36,6 +30,34 @@
     </style>
 </head>
 <body>
+
+    <script>
+        const result = document.getElementById('email')
+        //new URLSearchParams(window.location.search).forEach((value, name) => {
+          //  result.append(`${name}: ${value}`)
+          //  result.append(document.createElement('br'))
+       // })
+        if (result == "marco@student.edu") 
+        {
+            <p>Current Semester</p>
+                <table>
+                <tr>
+                <th>Current Classes</th>
+                <th>Course Subject</th>
+                <th>Course Number</th>
+                <th>Location</th>
+                <th>Time</th>
+                </tr>
+                <tr>
+                <td>Rhetoric & Composition II </td>
+                <td> ENGL </td>
+                <td> 2302 </td>
+                <td> SABAL 1.504 </td>
+                <td> M - F 2:00 pm - 4:00 pm </td>
+                </tr>
+                </table>
+        }
+    </script>
 <h1>Schedule</h1>
 
 <p>
@@ -145,20 +167,6 @@
             <td>M - F 4:00 pm - 6:00 pm</td>
         </tr>
     </table>
-}
-
-
-@if (@User.Identity?.Name == "marco@advisor.edu" || @User.Identity?.Name == "nathan@advisor.edu")
-{
-    <p>
-    Please input the email of the student who's Schedule you wish to see.
-    </p>
-
-    <form action="advisorIndex.cshtml" method="POST">
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required><br><br>
-	<input type="submit" value="Submit">
-    </form>
 }
 </body>
 </html>
