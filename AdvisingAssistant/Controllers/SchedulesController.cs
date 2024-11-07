@@ -57,6 +57,12 @@ namespace AdvisingAssistant.Controllers
         }
 
         [Authorize]
+        public IActionResult Roadmap()
+        {
+            return View("Roadmap");
+        }
+
+        [Authorize]
         public IActionResult Transcript()
         {
             return View("Transcript");
