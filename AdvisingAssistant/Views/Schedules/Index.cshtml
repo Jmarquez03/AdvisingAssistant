@@ -1,11 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
+
+
 @model IEnumerable<AdvisingAssistant.Models.Schedule>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
+
 <head>
     <style>
         table {
@@ -154,7 +157,7 @@
     Please input the email of the student who's Schedule you wish to see.
     </p>
 
-    <form action="advisorIndex.cshtml" method="POST">
+    <form method="POST" asp-action="AdvisorIndex">
     <label for="email">Email Address:</label>
     <input type="email" id="email" name="email" required><br><br>
 	<input type="submit" value="Submit">

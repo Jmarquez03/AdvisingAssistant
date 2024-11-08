@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+@model IEnumerable<AdvisingAssistant.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <style>
+        table {
+            width: 1000px; /* Set a fixed width for the tables */
+            height: 100px; /* Set a fixed height for the tables */
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        /* Styling for table cells to ensure uniformity */
+        td {
+            border: 1px solid #000; /* Add border around each cell */
+            text-align: center;
+            vertical-align: middle; /* Center text vertically */
+            width: 100px; /* Set width for each cell */
+            height: 50px; /* Set height for each cell */
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #f2f2f2;
+            border: 1px solid #000;
+            text-align: center;
+            vertical-align: middle;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>Marco's Schedule</h1>
+
+<p>
+    @*<a asp-action="Create">Add New Course</a>*@
+</p>
+
+    <p>Current Semester</p>
+    <table>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+            <th>Location</th>
+            <th>Time</th>
+        </tr>
+        <tr>
+            <td>Rhetoric & Composition II</td>
+            <td>ENGL</td>
+            <td>2302</td>
+            <td>SABAL 1.504</td>
+            <td>M - F 2:00 pm - 4:00 pm</td>
+        </tr>
+    </table>
+    <a asp-action="Index">Back to Search</a>
+</body>
