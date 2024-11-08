@@ -11,5 +11,6 @@ namespace AdvisingAssistant.Data
         {
         }
         public DbSet<AdvisingAssistant.Models.Course> Course { get; set; } = default!;
+        
     }
 }

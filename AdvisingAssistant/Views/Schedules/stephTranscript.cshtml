@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AdvisingAssistant.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Transcript";
+}
+<head>
+    <style>
+        table {
+            width: 1000px; /* Set a fixed width for the tables */
+            height: 100px; /* Set a fixed height for the tables */
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        /* Styling for table cells to ensure uniformity */
+        td {
+            border: 1px solid #000; /* Add border around each cell */
+            text-align: center;
+            vertical-align: middle; /* Center text vertically */
+            width: 100px; /* Set width for each cell */
+            height: 50px; /* Set height for each cell */
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #f2f2f2;
+            border: 1px solid #000;
+            text-align: center;
+            vertical-align: middle;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<h1>Stephanie's Transcript</h1>
+
+<p>Completed Courses</p>
+<table>
+    <tr>
+        <th>Course Name</th>
+        <th>Course Subject</th>
+        <th>Course Number</th>
+        <th>Final Grade</th>
+    </tr>
+    <tr>
+        <td>U.S. History I</td>
+        <td>HIST</td>
+        <td>1344</td>
+        <td>C</td>
+    </tr>
+</table>
+
+<p>In Progress</p>
+<table>
+    <tr>
+        <th>Course Name</th>
+        <th>Course Subject</th>
+        <th>Course Number</th>
+        <th>Final Grade</th>
+    </tr>
+    <tr>
+        <td>U.S. History II</td>
+        <td>HIST</td>
+        <td>2354</td>
+        <td>In Progress</td>
+    </tr>
+</table>
+
+<a asp-action="Transcript">Back to Search</a>

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<AdvisingAssistant.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Major";
+}
+<head>
+    <style>
+        table {
+            width: 1000px; /* Set a fixed width for the tables */
+            height: 100px; /* Set a fixed height for the tables */
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        /* Styling for table cells to ensure uniformity */
+        td {
+            border: 1px solid #000; /* Add border around each cell */
+            text-align: center;
+            vertical-align: middle; /* Center text vertically */
+            width: 100px; /* Set width for each cell */
+            height: 50px; /* Set height for each cell */
+        }
+
+        /* Styling for table headers */
+        th {
+            background-color: #f2f2f2;
+            border: 1px solid #000;
+            text-align: center;
+            vertical-align: middle;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<h1>Aneyda's Major Degree Plan</h1>
+
+<p>
+    @*<a asp-action="Create">Add New Course</a>*@
+</p>
+
+<h1>Computer Science Major</h1>
+<table>
+    <tr>
+        <th>Course Name</th>
+        <th>Course Subject</th>
+        <th>Course Number</th>
+        <th>Course Prerequisite 1</th>
+        <th>Course Prerequisite 2</th>
+        <th>Progress</th>
+    </tr>
+    <tr>
+        <td>Intro to Computer Science</td>
+        <td>CSCI</td>
+        <td>1101</td>
+        <td>None</td>
+        <td>None</td>
+        <td>Completed</td>
+    </tr>
+    <tr>
+        <td>Computer Science I</td>
+        <td>CSCI</td>
+        <td>2302</td>
+        <td>Intro to Computer Science</td>
+        <td>None</td>
+        <td>In Progress</td>
+    </tr>
+    <tr>
+        <td>Elective</td>
+        <td>MISC</td>
+        <td>0000</td>
+        <td>See course page for more details</td>
+        <td>See course page for more details</td>
+        <td>Pending</td>
+    </tr>
+    <tr>
+        <td>Elective</td>
+        <td>MISC</td>
+        <td>0000</td>
+        <td>See course page for more details</td>
+        <td>See course page for more details</td>
+        <td>Pending</td>
+    </tr>
+    <tr>
+        <td>Senior Project</td>
+        <td>CSCI</td>
+        <td>3410</td>
+        <td>Intro to Computer Science</td>
+        <td>Computer Science I</td>
+        <td>Pending</td>
+    </tr>
+</table>
+
+<a asp-action="Major">Back to Search</a>
