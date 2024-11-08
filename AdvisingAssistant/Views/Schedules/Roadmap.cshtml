@@ -301,9 +301,9 @@
     Please input the email of the student who's Roadmap you wish to see.
     </p>
 
-    <form asp-action="AdvisorRoadmap">
+    <form method="POST" asp-action="AdvisorRoadmap">
         <label for="email">Email Address:</label>
-        <input type="text" id="email" name="email"><br><br>
+        <input type="email" id="email" name="email" required><br><br>
         <input type="submit" value="Submit">
     </form>
 }

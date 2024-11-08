@@ -67,7 +67,7 @@ namespace AdvisingAssistant.Controllers
 				}
 				else
                 {
-                    return View();
+                    return View("Index");
                 }
             }
             else
@@ -105,7 +105,7 @@ namespace AdvisingAssistant.Controllers
                 }
                 else
                 {
-                    return View();
+                    return View("Major");
                 }
             }
             else
@@ -142,7 +142,7 @@ namespace AdvisingAssistant.Controllers
                 }
                 else
                 {
-                    return View();
+                    return View("Transcript");
                 }
             }
             else
@@ -178,7 +178,7 @@ namespace AdvisingAssistant.Controllers
                 }
                 else
                 {
-                    return View();
+                    return View("Roadmap");
                 }
             }
             else
