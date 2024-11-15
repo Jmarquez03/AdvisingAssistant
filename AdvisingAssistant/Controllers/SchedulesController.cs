@@ -67,7 +67,7 @@ namespace AdvisingAssistant.Controllers
 				}
 				else
                 {
-                    return View("Index");
+                    return View("ScheduleErrorMsg");
                 }
             }
             else
@@ -105,7 +105,7 @@ namespace AdvisingAssistant.Controllers
                 }
                 else
                 {
-                    return View("Major");
+                    return View("MajorErrorMsg");
                 }
             }
             else
@@ -124,7 +124,7 @@ namespace AdvisingAssistant.Controllers
                 {
                     return View("marcoTranscript");
                 }
-                if (email == "nathan@student.edu")  //I left off here!!!
+                if (email == "nathan@student.edu")  
                 {
                     return View("nathanTranscript");
                 }
@@ -142,7 +142,7 @@ namespace AdvisingAssistant.Controllers
                 }
                 else
                 {
-                    return View("Transcript");
+                    return View("TranscriptErrorMSG");
                 }
             }
             else
@@ -160,7 +160,7 @@ namespace AdvisingAssistant.Controllers
                 {
                     return View("marcoRoadmap");
                 }
-                if (email == "nathan@student.edu")  //I left off here!!!
+                if (email == "nathan@student.edu")
                 {
                     return View("nathanRoadmap");
                 }
@@ -178,7 +178,7 @@ namespace AdvisingAssistant.Controllers
                 }
                 else
                 {
-                    return View("Roadmap");
+                    return View("RoadmapErrorMsg");
                 }
             }
             else
