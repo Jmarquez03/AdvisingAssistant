@@ -1,167 +1,31 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
-
-
-@model IEnumerable<AdvisingAssistant.Models.Schedule>
+﻿@model IEnumerable<AdvisingAssistant.Models.Schedule>
 
 @{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Schedule";
 }
 
-<head>
-    <style>
-        table {
-            width: 1000px; /* Set a fixed width for the tables */
-            height: 100px; /* Set a fixed height for the tables */
-            border-collapse: collapse;
-            margin: 20px;
+<h2>Schedule</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Current Classes</th>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+            <th>Location</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var schedule in Model)
+        {
+            <tr>
+                <td>@schedule.Course.Name</td>
+                <td>@schedule.Course.Subject</td>
+                <td>@schedule.Course.CourseNumber</td>
+                <td>@schedule.Location</td>
+                <td>@schedule.Time</td>
+            </tr>
         }
-
-        /* Styling for table cells to ensure uniformity */
-        td {
-            border: 1px solid #000; /* Add border around each cell */
-            text-align: center;
-            vertical-align: middle; /* Center text vertically */
-            width: 100px; /* Set width for each cell */
-            height: 50px; /* Set height for each cell */
-        }
-
-        /* Styling for table headers */
-        th {
-            background-color: #f2f2f2;
-            border: 1px solid #000;
-            text-align: center;
-            vertical-align: middle;
-            width: 100px;
-            height: 50px;
-        }
-    </style>
-</head>
-<body>
-<h1>Schedule</h1>
-
-<p>
-    @*<a asp-action="Create">Add New Course</a>*@
-</p>
-
-@if (@User.Identity?.Name == "marco@student.edu")
-{
-    <p>Marco's Current Semester</p>
-    <table>
-        <tr>
-            <th>Current Classes</th>
-            <th>Course Subject</th>
-            <th>Course Number</th>
-            <th>Location</th>
-            <th>Time</th>
-        </tr>
-        <tr>
-            <td>Rhetoric & Composition II</td>
-            <td>ENGL</td>
-            <td>2302</td>
-            <td>SABAL 1.504</td>
-            <td>M - F 2:00 pm - 4:00 pm</td>
-        </tr>
-    </table>
-}
-
-@if (@User.Identity?.Name == "nathan@student.edu")
-{
-    <p>Nathan's Current Semester</p>
-    <table>
-        <tr>
-            <th>Current Classes</th>
-            <th>Course Subject</th>
-            <th>Course Number</th>
-            <th>Location</th>
-            <th>Time</th>
-        </tr>
-        <tr>
-            <td>Linear Algebra</td>
-            <td>MATH</td>
-            <td>2318</td>
-            <td>BINAB 1.504</td>
-            <td>M - F 10:00 am - 12:00 pm</td>
-        </tr>
-    </table>
-}
-
-@if (@User.Identity?.Name == "aneyda@student.edu")
-{
-    <p>Aneyda's Current Semester</p>
-    <table>
-        <tr>
-            <th>Current Classes</th>
-            <th>Course Subject</th>
-            <th>Course Number</th>
-            <th>Location</th>
-            <th>Time</th>
-        </tr>
-        <tr>
-            <td>Computer Science I</td>
-            <td>CSCI</td>
-            <td>2302</td>
-            <td>BMAIN 1.504</td>
-            <td>M - F 8:00 am - 10:00 am</td>
-        </tr>
-    </table>
-}
-
-@if (@User.Identity?.Name == "jorge@student.edu")
-{
-    <p>Jorge's Current Semester</p>
-    <table>
-        <tr>
-            <th>Current Classes</th>
-            <th>Course Subject</th>
-            <th>Course Number</th>
-            <th>Location</th>
-            <th>Time</th>
-        </tr>
-        <tr>
-            <td>TX Gov & Pol</td>
-            <td>POLS</td>
-            <td>2306</td>
-            <td>SETB 1.504</td>
-            <td>M - F 12:00 pm - 2:00 pm</td>
-        </tr>
-    </table>
-}
-
-@if (@User.Identity?.Name == "steph@student.edu")
-{
-    <p>Stephanie's Current Semester</p>
-    <table>
-        <tr>
-            <th>Current Classes</th>
-            <th>Course Subject</th>
-            <th>Course Number</th>
-            <th>Location</th>
-            <th>Time</th>
-        </tr>
-        <tr>
-            <td>U.S. History II</td>
-            <td>HIST</td>
-            <td>1344</td>
-            <td>BMED 1.504</td>
-            <td>M - F 4:00 pm - 6:00 pm</td>
-        </tr>
-    </table>
-}
-
-
-@if (@User.Identity?.Name == "marco@advisor.edu" || @User.Identity?.Name == "nathan@advisor.edu")
-{
-    <p>
-    Please input the email of the student who's Schedule you wish to see.
-    </p>
-
-    <form method="POST" asp-action="AdvisorIndex">
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required><br><br>
-	<input type="submit" value="Submit">
-    </form>
-}
-</body>
-</html>
+    </tbody>
+</table>

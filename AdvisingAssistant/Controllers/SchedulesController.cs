@@ -1,6 +1,8 @@
+using AdvisingAssistant.Data;
 using AdvisingAssistant.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace AdvisingAssistant.Controllers
@@ -8,16 +10,24 @@ namespace AdvisingAssistant.Controllers
     public class SchedulesController : Controller
     {
         private readonly ILogger<SchedulesController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public SchedulesController(ILogger<SchedulesController> logger)
+        public SchedulesController(ILogger<SchedulesController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View("Index");
+            var userEmail = User.Identity.Name;
+            var schedules = await _context.Schedules
+                .Include(s => s.Course)
+                .Where(s => s.StudentEmail == userEmail)
+                .ToListAsync();
+
+            return View(schedules);
         }
 
         [Authorize]

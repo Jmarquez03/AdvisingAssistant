@@ -1,16 +1,24 @@
-﻿namespace AdvisingAssistant.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AdvisingAssistant.Models
 {
-    using Microsoft.Identity;
-    public class Schedule : Course
+    public class Schedule
     {
-        public Course previousClass { get; set; }
-        public Course currentClass { get; set; }
-        public Course futureClass1 { get; set; }
-        public Course futureClass2 { get; set; }
-        public Course futureClass3 { get; set; }
-        public string studentName { get; set; }
+        public int Id { get; set; }
+        [Required]
+        public required string StudentEmail { get; set; }
 
-        public Schedule() { }
+        [Required]
+        public int CourseId { get; set; }
 
+        [ForeignKey("CourseId")]
+        public required Course Course { get; set; }
+
+        [Required]
+        public required string Location { get; set; }
+
+        [Required]
+        public required string Time { get; set; }
     }
 }
