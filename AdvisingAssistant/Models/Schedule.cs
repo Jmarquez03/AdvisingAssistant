@@ -6,10 +6,10 @@ namespace AdvisingAssistant.Models
     public class Schedule
     {
         public int Id { get; set; }
-
+        [Display(Name = "Student's Email")]
         [Required]
         public required string StudentEmail { get; set; }
-
+        [Display(Name = "Course ID")]
         [Required]
         public int CourseId { get; set; }
 

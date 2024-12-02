@@ -3,11 +3,36 @@
 }
 <head>
     <style>
-        body{
-            background-image: url("/Images/Hawaii.jpg");
+        body {
+            background-image: url("https://neeley.tcu.edu/getmedia/b7191fb1-b2c6-494f-ae6e-cb56bcd22237/BBA-GirlsatTableLaptop-head.jpg?width=1800&height=610&ext=.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            background-position: -190px 0; /* Adjust the image position to the left */
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 1); /* Dark blur overlay */
+            backdrop-filter: blur(5px); /* Apply blur effect */
+        }
+        .text-center {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: whitesmoke;
         }
     </style>
 </head>
