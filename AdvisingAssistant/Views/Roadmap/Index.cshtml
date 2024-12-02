@@ -1,0 +1,27 @@
+﻿@model RoadmapViewModel
+
+<h2>Roadmap for @Model.StudentEmail</h2>
+
+@foreach (var semester in Model.Semesters)
+{
+    <h3>@semester.Name</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Course Number</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in semester.Courses)
+            {
+                <tr>
+                    <td>@course.Name</td>
+                    <td>@course.CourseNumber</td>
+                    <td>@course.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

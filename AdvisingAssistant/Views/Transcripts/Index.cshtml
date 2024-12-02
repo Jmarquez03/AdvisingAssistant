@@ -1,45 +1,25 @@
 ﻿@model IEnumerable<AdvisingAssistant.Models.Schedule>
 
-@{
-    ViewData["Title"] = "Transcript";
-}
+<h2>Transcript</h2>
 
-<h1>Transcripts</h1>
-
-@if (User.IsInRole("Student"))
-{
-    <p>Your Completed Courses</p>
-    <table>
+<table class="table">
+    <thead>
         <tr>
             <th>Course Name</th>
-            <th>Course Subject</th>
+            <th>Subject</th>
             <th>Course Number</th>
-            <th>Location</th>
-            <th>Time</th>
             <th>Final Grade</th>
         </tr>
+    </thead>
+    <tbody>
         @foreach (var schedule in Model)
         {
             <tr>
                 <td>@schedule.Course.Name</td>
                 <td>@schedule.Course.Subject</td>
                 <td>@schedule.Course.CourseNumber</td>
-                <td>@schedule.Location</td>
-                <td>@schedule.Time</td>
-                <td>@schedule.FinalGrade ?? "In Progress"</td>
+                <td>@schedule.FinalGrade</td>
             </tr>
         }
-    </table>
-}
-else if (User.IsInRole("Advisor"))
-{
-    <p>
-        Please input the email of the student whose Transcript you wish to see.
-    </p>
-
-    <form method="post" asp-action="AdvisorTranscript">
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
-        <input type="submit" value="Submit" />
-    </form>
-}
+    </tbody>
+</table>

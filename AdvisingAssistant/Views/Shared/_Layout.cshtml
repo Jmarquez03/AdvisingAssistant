@@ -19,37 +19,40 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                            @if (User.Identity.IsAuthenticated)
+                            {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Courses</a>
                             </li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
+                            @if (User.IsInRole("Student")){
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="Index">Schedule</a>
                                     </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="DegreePlan" asp-action="Index">Major Degree Plan</a>
                             </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Transcripts" asp-action="Index">Transcripts</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="Roadmap">Roadmap</a>
-                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Transcripts" asp-action="Index">Transcript</a>
+                            </li>
 
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Roadmap" asp-action="Index">Roadmap</a>
+                                </li>
+                            }
                                 @if (User.IsInRole("Advisor"))
                                 {
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="AddCourse">Add Course</a>
                                     </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area"" asp-controller="Transcripts" asp-action="Search">Search Student Transcript</a>
+
+                                    </li>
                                 }
                             }
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

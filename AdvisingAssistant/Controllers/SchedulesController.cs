@@ -55,4 +55,20 @@ public class SchedulesController : Controller
 
         return View(model);
     }
+    public async Task<IActionResult> Schedule()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        var currentCourses = await _context.Schedules
+            .Include(s => s.Course)
+            .Where(s => s.StudentEmail == user.Email && s.FinalGrade == null)
+            .ToListAsync();
+
+        return View(currentCourses);
+    }
+
 }

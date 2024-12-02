@@ -12,7 +12,16 @@ namespace AdvisingAssistant.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
+            // Seed degree plans
+            builder.Entity<DegreePlan>().HasData(
+                new DegreePlan { Id = 1, Major = "English" },
+                new DegreePlan { Id = 2, Major = "Computer Science" }
+            );
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

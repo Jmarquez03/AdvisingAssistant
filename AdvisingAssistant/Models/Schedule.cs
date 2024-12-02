@@ -17,10 +17,10 @@ namespace AdvisingAssistant.Models
         public Course Course { get; set; }
 
         [Required]
-        public required string Location { get; set; }
+        public string? Location { get; set; }
 
         [Required]
-        public required string Time { get; set; }
+        public string? Time { get; set; }
 
         public string? FinalGrade { get; set; } // Nullable to handle in-progress courses
     }

@@ -22,11 +22,23 @@ public class TranscriptsController : Controller
     public async Task<IActionResult> Index()
     {
         var user = await _userManager.GetUserAsync(User);
-        var schedules = _context.Schedules
+        if (user == null || user.Email == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        var schedules = await _context.Schedules
             .Where(s => s.StudentEmail == user.Email)
             .Include(s => s.Course)
-            .ToList();
+            .ToListAsync();
+
         return View(schedules);
+    }
+
+    [Authorize(Policy = "RequireAdvisorRole")]
+    public IActionResult Search()
+    {
+        return View();
     }
 
     [HttpPost]
@@ -34,15 +46,16 @@ public class TranscriptsController : Controller
     public async Task<IActionResult> AdvisorTranscript(string email)
     {
         var student = await _userManager.FindByEmailAsync(email);
-        if (student == null)
+        if (student == null || student.Email == null)
         {
-            return NotFound();
+            return NotFound("Student not found.");
         }
 
-        var schedules = _context.Schedules
+        var schedules = await _context.Schedules
             .Where(s => s.StudentEmail == student.Email)
             .Include(s => s.Course)
-            .ToList();
+            .ToListAsync();
+
         return View("Index", schedules);
     }
 }

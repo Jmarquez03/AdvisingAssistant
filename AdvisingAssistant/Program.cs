@@ -18,6 +18,12 @@ builder.Services.AddControllersWithViews();
 //    .AddEntityFrameworkStores<ApplicationDbContext>()
 //    .AddDefaultTokenProviders();
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdvisorRole", policy =>
+        policy.RequireRole("Advisor"));
+});
+
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
