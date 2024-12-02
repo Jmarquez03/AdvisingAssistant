@@ -14,39 +14,45 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Advising Assistant</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                            @if (User.Identity.IsAuthenticated)
-                            {
+                        @if (User.Identity.IsAuthenticated)
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Courses</a>
                             </li>
-                            @if (User.IsInRole("Student")){
+                            @if (User.IsInRole("Student"))
+                            {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="Index">Schedule</a>
-                                    </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="DegreePlan" asp-action="Index">Major Degree Plan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Transcripts" asp-action="Index">Transcript</a>
-                            </li>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="DegreePlan" asp-action="Index">Major Degree Plan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Transcripts" asp-action="Index">Transcript</a>
+                                </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Roadmap" asp-action="Index">Roadmap</a>
                                 </li>
                             }
-                                @if (User.IsInRole("Advisor"))
+                            @if (User.IsInRole("Advisor"))
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="AddCourse">Add Course</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="AdvisorView">Search Student Schedule</a>
                                     </li>
                                     <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area"" asp-controller="Transcripts" asp-action="Search">Search Student Transcript</a>
-
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Roadmap" asp-action="AdvisorView">Search Student Roadmap</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="AddCourse">Add Course</a>
                                     </li>
                                 }
                             }

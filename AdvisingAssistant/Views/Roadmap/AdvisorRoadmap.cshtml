@@ -1,0 +1,18 @@
+﻿@model RoadmapViewModel
+
+@{
+    ViewData["Title"] = "Student Roadmap";
+}
+
+<h2>Student Roadmap for @Model.StudentEmail</h2>
+
+@foreach (var semester in Model.Semesters)
+{
+    <h3>@semester.Name</h3>
+    <ul>
+        @foreach (var course in semester.Courses)
+        {
+            <li>@course.Name (@course.CourseNumber)</li>
+        }
+    </ul>
+}

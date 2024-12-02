@@ -98,4 +98,57 @@ public class RoadmapController : Controller
 
         return semesters;
     }
+    [Authorize(Roles = "Advisor")]
+    public IActionResult AdvisorView()
+    {
+        return View();
+    }
+
+    [Authorize(Roles = "Advisor")]
+    [HttpPost]
+    public async Task<IActionResult> AdvisorView(string studentEmail)
+    {
+        if (string.IsNullOrEmpty(studentEmail))
+        {
+            ModelState.AddModelError(string.Empty, "Please enter a valid email.");
+            return View();
+        }
+
+        var user = await _userManager.FindByEmailAsync(studentEmail);
+        if (user == null)
+        {
+            ModelState.AddModelError(string.Empty, "Student not found.");
+            return View();
+        }
+
+        var degreePlan = await _context.DegreePlans
+            .Include(dp => dp.Courses)
+            .FirstOrDefaultAsync(dp => dp.Major == user.Major);
+
+        if (degreePlan == null)
+        {
+            ModelState.AddModelError(string.Empty, "Degree plan not found.");
+            return View();
+        }
+
+        var takenCourses = await _context.Schedules
+            .Where(s => s.StudentEmail == user.Email)
+            .Select(s => s.CourseId)
+            .ToListAsync();
+
+        var remainingCourses = degreePlan.Courses
+            .Where(c => !takenCourses.Contains(c.Id))
+            .ToList();
+
+        var roadmap = GenerateRoadmap(remainingCourses);
+
+        var roadmapViewModel = new RoadmapViewModel
+        {
+            StudentEmail = user.Email,
+            Semesters = roadmap
+        };
+
+        return View("AdvisorRoadmap", roadmapViewModel);
+    }
+
 }

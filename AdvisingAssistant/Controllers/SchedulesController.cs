@@ -70,5 +70,42 @@ public class SchedulesController : Controller
 
         return View(currentCourses);
     }
+    [Authorize(Roles = "Advisor")]
+    [HttpGet]
+    public IActionResult AdvisorView()
+    {
+        return View();
+    }
+
+    [Authorize(Roles = "Advisor")]
+    [HttpPost]
+    public async Task<IActionResult> AdvisorView(string studentEmail)
+    {
+        if (string.IsNullOrEmpty(studentEmail))
+        {
+            ModelState.AddModelError(string.Empty, "Please enter a valid email.");
+            return View();
+        }
+
+        var user = await _userManager.FindByEmailAsync(studentEmail);
+        if (user == null)
+        {
+            ModelState.AddModelError(string.Empty, "Student not found.");
+            return View();
+        }
+
+        var schedules = await _context.Schedules
+            .Where(s => s.StudentEmail == user.Email)
+            .Include(s => s.Course)
+            .ToListAsync();
+
+        if (!schedules.Any())
+        {
+            ModelState.AddModelError(string.Empty, "No schedules found for this student.");
+            return View();
+        }
+
+        return View("AdvisorSchedule", schedules);
+    }
 
 }

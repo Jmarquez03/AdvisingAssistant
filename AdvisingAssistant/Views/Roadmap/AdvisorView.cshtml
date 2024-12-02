@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Advisor View";
+}
+
+<h2>Search Student Roadmap</h2>
+
+<form asp-action="AdvisorView" method="post">
+    <div class="form-group">
+        <label for="studentEmail">Student Email</label>
+        <input type="email" class="form-control" id="studentEmail" name="studentEmail" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
