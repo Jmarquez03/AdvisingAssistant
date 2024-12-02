@@ -4,6 +4,7 @@ using AdvisingAssistant.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdvisingAssistant.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241202001937_degreePlan")]
+    partial class degreePlan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -325,11 +328,9 @@ namespace AdvisingAssistant.Data.Migrations
 
             modelBuilder.Entity("AdvisingAssistant.Models.Course", b =>
                 {
-                    b.HasOne("AdvisingAssistant.Models.DegreePlan", "DegreePlan")
+                    b.HasOne("AdvisingAssistant.Models.DegreePlan", null)
                         .WithMany("Courses")
                         .HasForeignKey("DegreePlanId");
-
-                    b.Navigation("DegreePlan");
                 });
 
             modelBuilder.Entity("AdvisingAssistant.Models.Schedule", b =>

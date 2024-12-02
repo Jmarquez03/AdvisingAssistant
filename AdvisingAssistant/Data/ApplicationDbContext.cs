@@ -6,6 +6,8 @@ namespace AdvisingAssistant.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<DegreePlan> DegreePlans { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

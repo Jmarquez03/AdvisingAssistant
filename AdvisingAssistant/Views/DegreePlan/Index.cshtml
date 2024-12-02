@@ -1,0 +1,22 @@
+﻿@model DegreePlan
+
+<h2>@Model.Major Degree Plan</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Course Number</th>
+            <th>Course Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model.Courses)
+        {
+            <tr>
+                <td>@course.Subject</td>
+                <td>@course.CourseNumber</td>
+                <td>@course.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

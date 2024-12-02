@@ -4,6 +4,7 @@ using AdvisingAssistant.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdvisingAssistant.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241201222702_UpdateSchedule")]
+    partial class UpdateSchedule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,6 @@ namespace AdvisingAssistant.Data.Migrations
                     b.Property<string>("CourseNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DegreePlanId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -59,26 +59,7 @@ namespace AdvisingAssistant.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DegreePlanId");
-
                     b.ToTable("Course");
-                });
-
-            modelBuilder.Entity("AdvisingAssistant.Models.DegreePlan", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Major")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DegreePlans");
                 });
 
             modelBuilder.Entity("AdvisingAssistant.Models.Schedule", b =>
@@ -323,15 +304,6 @@ namespace AdvisingAssistant.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AdvisingAssistant.Models.Course", b =>
-                {
-                    b.HasOne("AdvisingAssistant.Models.DegreePlan", "DegreePlan")
-                        .WithMany("Courses")
-                        .HasForeignKey("DegreePlanId");
-
-                    b.Navigation("DegreePlan");
-                });
-
             modelBuilder.Entity("AdvisingAssistant.Models.Schedule", b =>
                 {
                     b.HasOne("AdvisingAssistant.Models.Course", "Course")
@@ -392,11 +364,6 @@ namespace AdvisingAssistant.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("AdvisingAssistant.Models.DegreePlan", b =>
-                {
-                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

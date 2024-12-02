@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdvisingAssistant.Models
 {
@@ -15,7 +16,8 @@ namespace AdvisingAssistant.Models
         public string Prerequisite1 { get; set; }
         [Display(Name = "Prerequisite 2")]
         public string Prerequisite2 { get; set; }
-
+        [ForeignKey("DegreePlanId")]
+        public DegreePlan? DegreePlan { get; set; }
         public Course() 
         { 
         

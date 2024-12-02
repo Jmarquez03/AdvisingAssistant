@@ -5,6 +5,7 @@ using AdvisingAssistant.Data;
 using AdvisingAssistant.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 public class TranscriptsController : Controller
 {
@@ -21,7 +22,10 @@ public class TranscriptsController : Controller
     public async Task<IActionResult> Index()
     {
         var user = await _userManager.GetUserAsync(User);
-        var schedules = _context.Schedules.Where(s => s.StudentEmail == user.Email).ToList();
+        var schedules = _context.Schedules
+            .Where(s => s.StudentEmail == user.Email)
+            .Include(s => s.Course)
+            .ToList();
         return View(schedules);
     }
 
@@ -35,7 +39,10 @@ public class TranscriptsController : Controller
             return NotFound();
         }
 
-        var schedules = _context.Schedules.Where(s => s.StudentEmail == student.Email).ToList();
+        var schedules = _context.Schedules
+            .Where(s => s.StudentEmail == student.Email)
+            .Include(s => s.Course)
+            .ToList();
         return View("Index", schedules);
     }
 }
